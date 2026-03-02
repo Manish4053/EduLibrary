@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+/* Enable DaisyUI */
+@plugin "daisyui";
+
+/* Register themes (VERY IMPORTANT) */
+@plugin "daisyui/theme" {
+  name: "light";
+}
+
+@plugin "daisyui/theme" {
+  name: "synthwave";
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
