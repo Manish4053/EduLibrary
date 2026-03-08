@@ -1,0 +1,29 @@
+{
+  "name": "EduLibrary",
+  "version": "1.0.0",
+  "description": "mern project",
+  "homepage": "https://github.com/Manish4053/EduLibrary#readme",
+  "bugs": {
+    "url": "https://github.com/Manish4053/EduLibrary/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manish4053/EduLibrary.git"
+  },
+  "license": "ISC",
+  "author": "Manish Sah",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.3",
+    "nodemon": "^3.1.14"
+  }
+}

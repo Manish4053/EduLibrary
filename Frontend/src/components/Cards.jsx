@@ -31,7 +31,7 @@ function Cards({ item }) {
         </div>
 
         <p className="text-sm text-gray-500">
-          {item.catageory}
+          {item.category}
         </p>
 
         <div className="flex justify-between items-center pt-2">

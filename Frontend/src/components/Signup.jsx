@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 function Signup() {
   const navigate = useNavigate();
@@ -10,14 +12,36 @@ function Signup() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const userInfo = {
+      fullname: data.fullname,
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const res = await axios.post(
+        "http://localhost:4001/user/signup",
+        userInfo
+      );
+      // console.log(res.data);
+
+      if (res.data) {
+        toast.success("Signup successful!");
+        navigate("/");
+      }
+    } catch (err) {
+      console.error("Signup Error:", err);
+      toast.error(err.response?.data?.message || "Signup failed");
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-base-200 px-4">
       <div className="bg-base-100 shadow-2xl rounded-2xl p-8 w-full max-w-md relative">
         {/* Close Button */}
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
           className="btn btn-sm btn-circle btn-ghost absolute right-4 top-4"
         >
           ✕
@@ -36,11 +60,11 @@ function Signup() {
               type="text"
               placeholder="Enter your name"
               className="input input-bordered w-full"
-              {...register("name", { required: "Name is required" })}
+              {...register("fullname", { required: "Full name is required" })}
             />
-            {errors.name && (
+            {errors.fullname && (
               <span className="text-red-500 text-sm mt-1">
-                {errors.name.message}
+                {errors.fullname.message}
               </span>
             )}
           </div>
@@ -72,7 +96,7 @@ function Signup() {
               type="password"
               placeholder="Enter your password"
               className="input input-bordered w-full"
-                {...register("password", { required: "Password is required" })}
+              {...register("password", { required: "Password is required" })}
             />
             {errors.password && (
               <span className="text-red-500 text-sm mt-1">

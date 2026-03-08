@@ -13,7 +13,7 @@ export default function Footer() {
         {/* Brand Section */}
         <div>
           <h2 className="text-3xl font-bold mb-4">
-            BookStore
+            EduLibrary
           </h2>
           <p className="text-sm opacity-70 leading-6">
             Your one-stop destination for amazing books and learning resources.
@@ -61,7 +61,7 @@ export default function Footer() {
 
       {/* Bottom Section */}
       <div className="border-t border-base-300 mt-12 pt-4 text-center text-sm opacity-70">
-        © {new Date().getFullYear()} BookStore. All Rights Reserved.
+        © {new Date().getFullYear()} EduLibrary. All Rights Reserved.
       </div>
     </footer>
   );
