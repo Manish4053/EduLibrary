@@ -1,5 +1,6 @@
 import React from "react";
-import banner from "../assets/Banner.jpg";
+import banner from "../assets/Poster.jpg";
+
 
 function Banner() {
   return (
@@ -50,10 +51,16 @@ function Banner() {
         </div>
         <div className=" order-1 w-full md:w-1/2 p-4 ">
           <img
-            src={banner}
-            className="md:w-[550px] md:h-[550px] md:ml-12"
-            alt="Banner"
-          />
+  src={banner}
+  alt="Banner"
+  className="md:w-[550px] md:h-[550px] md:ml-12
+             rounded-full
+             object-cover
+             shadow-2xl
+             border-4 border-pink-200
+             hover:scale-105
+             transition duration-300"
+/>
         </div>
       </div>
     </>

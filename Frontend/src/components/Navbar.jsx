@@ -4,6 +4,8 @@ import Login from "./Login";
 import Logout from "./Logout";
 import { useAuth } from "../context/AuthProvider";
 
+import logo from "../assets/logo.png";
+
 function Navbar() {
   const [authUser, setAuthUser] = useAuth();
 
@@ -20,37 +22,38 @@ function Navbar() {
     setTheme(e.target.checked ? "synthwave" : "light");
   };
 
-  const navItems = (
-    <>
-      {[
-        { name: "Home", path: "/" },
-        { name: "Course", path: "/course" },
-        { name: "Contact", path: "/contact" },
-        { name: "About", path: "/about" },
-      ].map((item) => (
-        <li key={item.name}>
-          <Link
-            to={item.path}
-            className="relative px-2 py-1 text-base-content font-medium transition-all duration-300 
-           hover:text-primary hover:-translate-y-0.5 group"
-          >
-            {item.name}
+const navItems = (
+  <>
+    {[
+      { name: "Home", path: "/" },
+      { name: "Course", path: "/course" },
+      { name: "Contact", path: "/contact" },
+      { name: "About", path: "/about" },
+    ].map((item) => (
+      <li key={item.name}>
+        <Link
+          to={item.path}
+          className="relative px-3 py-2 text-sm font-medium text-gray-700 
+          hover:text-pink-500 transition duration-300 group"
+        >
+          {item.name}
 
-            {/* Animated Underline */}
-            <span
-              className="absolute left-0 -bottom-1 h-[2px] w-0 
-                       bg-gradient-to-r from-purple-500 to-pink-500
-                       transition-all duration-300 group-hover:w-full"
-            ></span>
-          </Link>
-        </li>
-      ))}
-    </>
-  );
+          {/* Animated Underline */}
+          <span
+            className="absolute left-0 -bottom-1 h-[2px] w-0 
+            bg-gradient-to-r from-pink-500 to-purple-500
+            transition-all duration-300 ease-in-out
+            group-hover:w-full"
+          ></span>
+        </Link>
+      </li>
+    ))}
+  </>
+);
 
   return (
-    <div className="max-w-screen-2xl container mx-auto sticky top-0 z-50">
-      <div className="navbar bg-base-100 shadow-sm justify-between">
+<div className="max-w-screen-2xl container mx-auto sticky top-0 z-50 bg-white/70 backdrop-blur-lg border-b border-pink-100">
+      <div className="navbar justify-between px-4 shadow-sm">
         {/* LEFT */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -79,26 +82,33 @@ function Navbar() {
             </ul>
           </div>
 
-          <a className="text-2xl font-bold cursor-pointer">EduLibrary</a>
+          {/* {logo} */}
+          <div className="flex items-center gap-3 cursor-pointer">
+            <img
+              src={logo}
+              alt="EduLibrary"
+              className="w-10 h-10 object-contain rounded-full shadow-md"
+            />
+            <h1 className="text-xl font-bold text-pink-500">EduLibrary</h1>
+          </div>
         </div>
 
         {/* CENTER */}
-        <div className="navbar-end flex items-center gap-8 ">
-          <ul className="menu menu-horizontal gap-6 hidden lg:flex">
-            {navItems}
-          </ul>
-        </div>
+<div className="navbar-center hidden lg:flex">
+  <ul className="menu menu-horizontal gap-8 font-medium">
+    {navItems}
+  </ul>
+</div>
 
-        {/* RIGHT */}
         {/* RIGHT */}
         <div className="navbar-end flex items-center gap-6">
           {/* Search */}
           <div className="hidden md:block">
-            <label className="px-3 py-2 border border-base-300 bg-base-100 rounded-md flex items-center gap-2">
+            <label className="px-4 py-2 border border-gray-300 bg-white rounded-full flex items-center gap-2 shadow-sm">
               <input
                 type="text"
-                className="grow outline-none"
-                placeholder="Search"
+                className="grow outline-none bg-transparent"
+                placeholder="Search courses..."
               />
             </label>
           </div>
@@ -144,7 +154,7 @@ function Navbar() {
           ) : (
             <>
               <button
-                className="bg-black text-white px-4 py-2 rounded-md hover:bg-slate-800 duration-300"
+                className="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition duration-300 shadow-md"
                 onClick={() =>
                   document.getElementById("my_modal_3").showModal()
                 }
