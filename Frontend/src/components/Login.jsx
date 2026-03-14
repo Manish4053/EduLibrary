@@ -5,6 +5,9 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../context/AuthProvider";
 
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../firebase";
+
 function Login() {
   const navigate = useNavigate();
   const [authUser, setAuthUser] = useAuth();
@@ -33,7 +36,6 @@ function Login() {
         toast.success("Login successful!");
         // Close modal
         document.getElementById("my_modal_3").close();
-        
 
         // redirect to home page
         // navigate("/");
@@ -42,6 +44,24 @@ function Login() {
     } catch (error) {
       console.error("Login Error:", error);
       toast.error("Invalid email or password");
+    }
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      localStorage.setItem("user", JSON.stringify(user));
+      setAuthUser(user);
+
+      toast.success("Google login successful");
+
+      document.getElementById("my_modal_3").close();
+      window.location.reload();
+    } catch (error) {
+      console.error(error);
+      toast.error("Google login failed");
     }
   };
 
@@ -102,7 +122,27 @@ function Login() {
           >
             Login
           </button>
+          <div className="divider">OR</div>
         </form>
+<button
+  type="button"
+  onClick={handleGoogleLogin}
+  className="w-full flex items-center justify-center gap-3 
+             border border-gray-300 
+             bg-white text-gray-700 
+             px-4 py-2.5 rounded-lg 
+             shadow-sm 
+             hover:bg-gray-50 hover:shadow-md
+             transition duration-200"
+>
+  <img
+    src="https://developers.google.com/identity/images/g-logo.png"
+    alt="Google"
+    className="w-5 h-5"
+  />
+  <span className="font-medium">Continue with Google</span>
+</button>
+
         {/* FORM END */}
 
         {/* Signup Link */}
