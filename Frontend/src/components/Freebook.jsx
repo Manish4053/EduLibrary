@@ -33,7 +33,7 @@ const getBook = async () => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 3,
     initialSlide: 0,
     responsive: [
@@ -41,7 +41,7 @@ const getBook = async () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -64,7 +64,7 @@ const getBook = async () => {
   };
 
   return (
-    <div className="max-w-screen-2xl container mx-auto px-4 py-10">
+    <div className="max-w-screen-2xl container mx-auto px-6 py-10">
       
       {/* Heading */}
       <div className="mb-6">
@@ -80,7 +80,9 @@ const getBook = async () => {
       {/* Slider */}
       <Slider {...settings}>
         {book.map((item) => (
-          <Cards key={item._id} item={item} />
+         <div className="px-4 py-2"> 
+           <Cards key={item._id} item={item} />
+         </div>
         ))}
       </Slider>
 
