@@ -18,7 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      <Toaster />
+       <Toaster position="top-center" />
     </>
   );
 }

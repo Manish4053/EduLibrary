@@ -1,20 +1,16 @@
 import React from "react";
 import { FaTwitter, FaYoutube, FaFacebook } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-white-200 text-base-content pt-14 pb-6 mt-16 relative">
+    <footer className="bg-white-200 text-base-content pt-14 pb-6 mt-16 relative ">
+      <hr className="opacity-20 mb-4" />
 
-    
-      <hr  className="opacity-20 mb-4"/>
-
-      <div className="max-w-screen-xl mx-auto px-4 grid md:grid-cols-3 gap-12">
-
+      <div className="max-w-screen-xl mx-auto px-4 grid md:grid-cols-3 gap-12 ">
         {/* Brand Section */}
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            EduLibrary
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">EduLibrary</h2>
           <p className="text-sm opacity-70 leading-6">
             Your one-stop destination for amazing books and learning resources.
             Explore, read, and grow with us.
@@ -23,17 +19,22 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">
-            Quick Links
-          </h3>
+          <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
           <ul className="space-y-3">
-            {["Home", "Courses", "About", "Contact"].map((item) => (
+            {[
+              { name: "Home", path: "/" },
+              { name: "Courses", path: "/course" },
+              { name: "About", path: "/about" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
               <li
-                key={item}
+                key={item.name}
                 className="relative w-fit cursor-pointer opacity-80 hover:text-purple-500 transition duration-300 group"
               >
-                {item}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                <Link to={item.path}>
+                  {item.name}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -41,9 +42,7 @@ export default function Footer() {
 
         {/* Social Media */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">
-            Follow Us
-          </h3>
+          <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
 
           <div className="flex gap-6 text-xl">
             {[FaTwitter, FaYoutube, FaFacebook].map((Icon, index) => (
@@ -56,7 +55,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
       </div>
 
       {/* Bottom Section */}

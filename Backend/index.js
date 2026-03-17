@@ -7,12 +7,16 @@ import userRoute from "./route/user.route.js";
 
 import cors from "cors";
 
+import contactRoute from "./route/contact.js"
 
 dotenv.config();   // ✅ MUST COME FIRST
 
 const app = express();
 app.use(cors());   // ✅ Enable CORS for all routes
 app.use(express.json());   // ✅ Enable JSON parsing for incoming requests
+
+app.use("/contact", contactRoute);
+
 
 const URI = process.env.MONGO_URI || "mongodb://localhost:27017/BookCollectionDB";
 
